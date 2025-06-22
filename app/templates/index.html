@@ -16,6 +16,7 @@
 
     <link lang='sass' rel="stylesheet" href="./static/styles/main.css">
     <link rel='icon' href='./static/img/favicon.ico' type='image/x-icon' />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <title>{{ title }}</title>
 </head>
 
@@ -98,6 +99,35 @@
             {% endfor %}
         </ul>
     </section>
+
+    <section class="map-section">
+        <h2>Places I've Visited</h2>
+        <div id="map"></div>
+    </section>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Center the map (example: USA)
+        var map = L.map('map').setView([39.8283, -98.5795], 4);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Example places (replace with your own)
+        var places = [
+            { city: "Pullman, WA", coords: [46.7298, -117.1817] },
+            { city: "Pittsburgh, PA", coords: [40.4406, -79.9959] },
+            { city: "Sunnyvale, CA", coords: [37.3688, -122.0363] },
+            { city: "Corvallis, OR", coords: [44.5646, -123.2620] }
+        ];
+
+        places.forEach(function(place) {
+            L.marker(place.coords).addTo(map)
+                .bindPopup(place.city);
+        });
+    </script>
 </body>
 
 </html>
