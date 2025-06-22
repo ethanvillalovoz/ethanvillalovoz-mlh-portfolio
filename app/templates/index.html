@@ -60,13 +60,12 @@
         </p>
     </section>
 
-    <section class="work-experience" style="max-width:700px; margin:2rem auto; padding:1rem; background:#f4f4f4; border-radius:8px;">
+    <section class="work-experience">
         <h2>Work Experience</h2>
         {% for job in work_experiences %}
-        <div class="job" style="margin-bottom:1.5rem;">
-            <h3 style="margin-bottom:0.2rem;">{{ job.role }} — <span style="font-weight:normal;">{{ job.company }}</span>
-            </h3>
-            <p style="margin:0 0 0.5rem 0; color:#666;">{{ job.dates }} | {{ job.location }}</p>
+        <div class="job">
+            <h3>{{ job.role }} — <span style="font-weight:normal;">{{ job.company }}</span></h3>
+            <p class="job-dates">{{ job.dates }} | {{ job.location }}</p>
             {% if job.responsibilities %}
             <ul>
                 {% for responsibility in job.responsibilities %}
