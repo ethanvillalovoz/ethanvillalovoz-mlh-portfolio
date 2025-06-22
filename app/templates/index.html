@@ -20,12 +20,7 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <ul>
-            <li><a href="{{ url_for('index') }}">Home</a></li>
-            <li><a href="{{ url_for('hobbies_page') }}">Hobbies</a></li>
-        </ul>
-    </nav>
+    {% include "_nav.html" %}
 
     <header class="nav-bar">
         <div class="nav-content">
