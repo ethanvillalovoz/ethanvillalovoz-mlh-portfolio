@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import os
-from .data import work_experiences, hobbies  # Import hobbies
+from .data import work_experiences, hobbies, education  # Import education
 
 app = Flask(__name__)
 
@@ -13,7 +13,9 @@ def index():
         title="MLH Fellow",
         url=os.getenv("URL"),
         user=user,
-        work_experiences=work_experiences
+        work_experiences=work_experiences,
+        hobbies=hobbies,
+        education=education
     )
 
 

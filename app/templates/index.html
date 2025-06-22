@@ -77,6 +77,25 @@
         </div>
         {% endfor %}
     </section>
+
+    <section class="education-section">
+        <h2>Education</h2>
+        <ul class="education-list">
+            {% for edu in education %}
+            <li class="education-item">
+                <strong>{{ edu.school }}</strong> <span class="education-year">({{ edu.years }})</span><br>
+                {{ edu.degree }}<br>
+                {{ edu.location }}<br>
+                {{ edu.gpa }}<br>
+                <ul>
+                    {% for detail in edu.details %}
+                    <li>{{ detail }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 </body>
 
 </html>
