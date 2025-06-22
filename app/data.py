@@ -53,3 +53,21 @@ hobbies = [
         "description": "I play both indoor and beach volleyball to stay active and have fun."
     }
 ]
+
+education = [
+    {
+        "school": "Washington State University, Honors College",
+        "years": "2021–2025",
+        "degree": "B.S. in Computer Science, Minor in Mathematics (Summa Cum Laude)",
+        "location": "Pullman, Washington USA",
+        "gpa": "GPA 3.94",
+        "details": [
+            "Graduated with honors, focusing on AI, machine learning, and mathematics.",
+            "Capstone Project: Retrieval-Augmented Generation (RAG) using Knowledge Graphs and Vector Search",
+            "Honors College",
+            "NIH MARC Fellow",
+            "ESTEEMED MIRA Scholar",
+            "VCEA College Ambassador"
+        ]
+    }
+]

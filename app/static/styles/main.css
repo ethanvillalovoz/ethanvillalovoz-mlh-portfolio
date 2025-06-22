@@ -176,3 +176,28 @@ body {
 .main-container {
     margin-top: 0;
 }
+
+.education-section {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+.education-list {
+    list-style: none;
+    padding: 0;
+}
+.education-item {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+.education-year {
+    color: #666;
+    font-size: 0.95rem;
+}
+.education-item ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    padding-left: 1.2rem;
+}
