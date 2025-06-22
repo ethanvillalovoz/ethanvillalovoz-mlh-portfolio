@@ -59,6 +59,23 @@
             Please feel free to reach out about research, collaboration, or any advice I can help with!
         </p>
     </section>
+
+    <section class="work-experience">
+        <h2>Work Experience</h2>
+        {% for job in work_experiences %}
+        <div class="job">
+            <h3>{{ job.role }} — <span style="font-weight:normal;">{{ job.company }}</span></h3>
+            <p class="job-dates">{{ job.dates }} | {{ job.location }}</p>
+            {% if job.responsibilities %}
+            <ul>
+                {% for responsibility in job.responsibilities %}
+                <li>{{ responsibility }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </section>
 </body>
 
 </html>
