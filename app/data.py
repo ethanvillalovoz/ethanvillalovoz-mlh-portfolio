@@ -62,12 +62,12 @@ education = [
         "location": "Pullman, Washington USA",
         "gpa": "GPA 3.94",
         "details": [
-            # "Graduated with honors, focusing on AI, machine learning, and mathematics.",
-            # "Capstone Project: Retrieval-Augmented Generation (RAG) using Knowledge Graphs and Vector Search",
-            # "Honors College",
-            # "NIH MARC Fellow",
-            # "ESTEEMED MIRA Scholar",
-            # "VCEA College Ambassador"
+            "Graduated with honors, focusing on AI, machine learning, and mathematics.",
+            "Capstone Project: Retrieval-Augmented Generation (RAG) using Knowledge Graphs and Vector Search",
+            "Honors College",
+            "NIH MARC Fellow",
+            "ESTEEMED MIRA Scholar",
+            "VCEA College Ambassador"
         ]
     }
 ]
