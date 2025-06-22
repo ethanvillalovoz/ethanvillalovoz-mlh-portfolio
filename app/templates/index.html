@@ -87,11 +87,13 @@
                 {{ edu.degree }}<br>
                 {{ edu.location }}<br>
                 {{ edu.gpa }}<br>
+                {% if edu.details %}
                 <ul>
                     {% for detail in edu.details %}
                     <li>{{ detail }}</li>
                     {% endfor %}
                 </ul>
+                {% endif %}
             </li>
             {% endfor %}
         </ul>
