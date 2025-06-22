@@ -1,9 +1,7 @@
+from flask import Flask, render_template
 import os
-from flask import Flask, render_template, request
-from dotenv import load_dotenv
-from .data import work_experiences  # Import work experiences from data.py
+from .data import work_experiences, hobbies  # Import hobbies
 
-load_dotenv()
 app = Flask(__name__)
 
 
@@ -16,4 +14,16 @@ def index():
         url=os.getenv("URL"),
         user=user,
         work_experiences=work_experiences
+    )
+
+
+@app.route("/hobbies")
+def hobbies_page():
+    user = {"name": "Ethan Villalovoz"}
+    return render_template(
+        'hobbies.html',
+        title="My Hobbies",
+        url=os.getenv("URL"),
+        user=user,
+        hobbies=hobbies
     )

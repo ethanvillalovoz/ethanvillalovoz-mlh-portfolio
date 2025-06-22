@@ -35,3 +35,21 @@ work_experiences = [
         ]
     }
 ]
+
+hobbies = [
+    {
+        "name": "Watching TV Shows",
+        "image": "img/hobbies/watching_tv.jpg",
+        "description": "I’m currently binge-watching Community (Troy and Abed are my favorites!) and plan to finish Suits soon."
+    },
+    {
+        "name": "Learning Guitar",
+        "image": "img/hobbies/learning_guitar.jpg",
+        "description": "I’m teaching myself guitar—it’s a fun challenge, but my fingernails are always short!"
+    },
+    {
+        "name": "Playing Volleyball",
+        "image": "img/hobbies/playing_volleyball.jpg",
+        "description": "I play both indoor and beach volleyball to stay active and have fun."
+    }
+]
