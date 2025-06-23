@@ -7,6 +7,15 @@ work_experiences = [
         "responsibilities": []
     },
     {
+        "role": "Undergraduate Research Assistant",
+        "company": "Washington State University",
+        "dates": "2023–2024",
+        "location": "Pullman, Washington USA",
+        "responsibilities": [
+            "Analyzed security vulnerabilities in LLM-generated code and applied Bayesian optimization to enhance prompt accuracy for secure and functionally correct code generation."
+        ]
+    },
+    {
         "role": "Robotics Institute Summer Scholar",
         "company": "Carnegie Mellon University",
         "dates": "Summer 2024",
