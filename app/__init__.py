@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import os
-from .data import work_experiences, hobbies, education  # Import education
+from .data import work_experiences, hobbies, education, places  # Import education and places
 
 app = Flask(__name__)
 
@@ -15,7 +15,8 @@ def index():
         user=user,
         work_experiences=work_experiences,
         hobbies=hobbies,
-        education=education
+        education=education,
+        places=places
     )
 
 
