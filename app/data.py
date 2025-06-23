@@ -71,3 +71,10 @@ education = [
         ]
     }
 ]
+
+places = [
+    {"city": "Pullman, WA", "coords": [46.7298, -117.1817]},
+    {"city": "Pittsburgh, PA", "coords": [40.4406, -79.9959]},
+    {"city": "Sunnyvale, CA", "coords": [37.3688, -122.0363]},
+    {"city": "Corvallis, OR", "coords": [44.5646, -123.2620]}
+]
