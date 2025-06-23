@@ -38,17 +38,34 @@ You need to do all your progress here.
 
 Make sure you have python3 and pip installed
 
-Create and activate virtual environment using virtualenv
-```bash
-$ python -m venv python3-virtualenv
-$ source python3-virtualenv/bin/activate
-```
-
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all dependencies!
 
-```bash
-pip install -r requirements.txt
-```
+You can use either `venv` or `conda` for your virtual environment. (Note: If you use conda and follow the exact instructions, pip is installed with it.)
+
+### Using Conda
+
+1. [Download and install Anaconda](https://www.anaconda.com/products/distribution) if you don’t have it.
+2. Create and activate a new environment:
+    ```bash
+    conda create -n myenv python=3.10
+    conda activate myenv
+    ```
+3. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+### Using venv
+
+1. Create and activate a virtual environment:
+    ```bash
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
+2. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ## Usage
 
