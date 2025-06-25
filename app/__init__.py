@@ -9,9 +9,9 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     show_all_news = request.args.get("show_all_news", "false") == "true"
-    visible_news = [item for item in news_items if not item.get("hidden")]
+    # Always pass all news items to the template
+    news = news_items
     hidden_news = [item for item in news_items if item.get("hidden")]
-    news = visible_news + (hidden_news if show_all_news else [])
     user = {"name": "Ethan Villalovoz"}
     return render_template(
         'index.html',
