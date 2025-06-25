@@ -15,6 +15,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/meta-mlh.css') }}">
     <link rel='icon' href="{{ url_for('static', filename='img/favicon.ico') }}" type='image/x-icon' />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <title>{{ title }}</title>
@@ -23,7 +24,7 @@
 <body>
     {% include "_nav.html" %}
 
-    <header class="nav-bar">
+    <!-- <header class="nav-bar">
         <div class="nav-content">
             <a href="/">
                 <div class="nav-logo">
@@ -31,7 +32,13 @@
                 </div>
             </a>
         </div>
-    </header>
+    </header> -->
+
+    <div class="meta-mlh-banner">
+        <img src="{{ url_for('static', filename='img/Meta_Platforms_Inc._logo.svg') }}" alt="Meta Logo">
+        <span class="banner-text">X</span>
+        <img src="{{ url_for('static', filename='img/mlh-logo-color.png') }}" alt="MLH Logo">
+    </div>
 
     <div class="profile">
         <div id="profile-picture" class="profile-picture">
@@ -41,7 +48,7 @@
     </div>
 
     <section class="about-me">
-        <h2 id="about-me-heading">About Me</h2>
+        <h2 id="about-me-heading" class="mlh">About Me <span class="badge-meta">Meta</span></h2>
         <p>
             I am a recent graduate in Computer Science from Washington State University with a minor in Mathematics.
             My research spans robotics, machine learning, and AI safety, with a focus on reinforcement learning,
@@ -63,9 +70,9 @@
     </section>
 
     <section class="work-experience">
-        <h2>Work Experience</h2>
+        <h2 class="mlh">Work Experience <span class="badge-mlh">MLH</span></h2>
         {% for job in work_experiences %}
-        <div class="job">
+        <div class="job card mlh">
             <h3>{{ job.role }} — <span style="font-weight:normal;">{{ job.company }}</span></h3>
             <p class="job-dates">{{ job.dates }} | {{ job.location }}</p>
             {% if job.responsibilities %}
@@ -80,10 +87,10 @@
     </section>
 
     <section class="education-section">
-        <h2>Education</h2>
+        <h2 class="mlh">Education <span class="badge-meta">Meta</span></h2>
         <ul class="education-list">
             {% for edu in education %}
-            <li class="education-item">
+            <li class="education-item card">
                 <strong>{{ edu.school }}</strong> <span class="education-year">({{ edu.years }})</span><br>
                 {{ edu.degree }}<br>
                 {{ edu.location }}<br>
@@ -100,8 +107,8 @@
         </ul>
     </section>
 
-    <section class="map-section" role="region" aria-label="Interactive map of places I've visited">
-        <h2>Places I've Visited</h2>
+    <section class="map-section card mlh" role="region" aria-label="Interactive map of places I've visited">
+        <h2 class="mlh">Places I've Visited <span class="badge-mlh">MLH</span></h2>
         <div id="map"></div>
     </section>
 

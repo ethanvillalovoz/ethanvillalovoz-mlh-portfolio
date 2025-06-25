@@ -1,0 +1,94 @@
+/* Meta x MLH Banner Styles */
+.meta-mlh-banner {
+  background: linear-gradient(90deg, #1877F2 60%, #FFD700 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #222;
+}
+.meta-mlh-banner img {
+  height: 40px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 2px 6px;
+}
+.meta-mlh-banner .banner-text {
+  color: #222;
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+}
+
+/* Meta x MLH Themed Buttons */
+.button, button, input[type="submit"] {
+  background: #1877F2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6em 1.4em;
+  font-weight: 600;
+  font-size: 1em;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(24,119,242,0.08);
+  cursor: pointer;
+}
+.button:hover, button:hover, input[type="submit"]:hover {
+  background: #FFD700;
+  color: #222;
+  box-shadow: 0 4px 16px rgba(255,215,0,0.15);
+}
+
+/* Section Headers */
+h1, h2, h3 {
+  border-bottom: 3px solid #1877F2;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.7em;
+}
+h2.mlh, h3.mlh {
+  border-color: #FFD700;
+}
+
+/* Themed Cards */
+.card {
+  border: 2px solid #1877F2;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(24,119,242,0.07);
+  padding: 1.2em;
+  margin-bottom: 1.5em;
+  background: #fff;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.card.mlh {
+  border-color: #FFD700;
+  box-shadow: 0 2px 12px rgba(255,215,0,0.10);
+}
+
+/* Navigation Bar Accent */
+.navbar {
+  border-bottom: 4px solid #FFD700;
+}
+
+/* MLH/Meta Badge */
+.badge-meta {
+  background: #1877F2;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.2em 0.7em;
+  font-size: 0.9em;
+  margin-left: 0.5em;
+  font-weight: 700;
+}
+.badge-mlh {
+  background: #FFD700;
+  color: #222;
+  border-radius: 6px;
+  padding: 0.2em 0.7em;
+  font-size: 0.9em;
+  margin-left: 0.5em;
+  font-weight: 700;
+  border: 1px solid #222;
+}

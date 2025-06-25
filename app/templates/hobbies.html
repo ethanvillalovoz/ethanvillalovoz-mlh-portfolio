@@ -15,6 +15,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/meta-mlh.css') }}">
     <link rel='icon' href="{{ url_for('static', filename='img/favicon.ico') }}" type='image/x-icon' />
     <title>{{ title }}</title>
 </head>
@@ -39,11 +40,18 @@
         <h1>{{ title }}</h1>
     </div>
 
+    <div class="meta-mlh-banner">
+        <img src="{{ url_for('static', filename='img/Meta_Platforms_Inc._logo.svg') }}" alt="Meta Logo">
+        <span class="banner-text">X</span>
+        <img src="{{ url_for('static', filename='img/mlh-logo-color.png') }}" alt="MLH Logo">
+    </div>
+
     <section class="hobbies-list-section">
-        <h2 id="about-me-heading" style="text-align:center;">My Hobbies</h2>
+        <h2 id="about-me-heading" class="mlh" style="text-align:center;">My Hobbies <span class="badge-mlh">MLH</span>
+        </h2>
         <div class="hobbies-list">
             {% for hobby in hobbies %}
-            <div class="hobby-card">
+            <div class="hobby-card card mlh">
                 <img src="{{ url_for('static', filename=hobby.image) }}" alt="{{ hobby.name }}" class="hobby-img">
                 <h3>{{ hobby.name }}</h3>
                 <p>{{ hobby.description }}</p>
