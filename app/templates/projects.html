@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Projects | Personal Portfolio">
+    <meta property="og:description" content="Project page for Ethan Villalovoz">
+    <meta property="og:url" content="{{ url }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/projects.css') }}">
+    <link rel='icon' href="{{ url_for('static', filename='img/favicon.ico') }}" type='image/x-icon' />
+    <title>Projects | {{ title }}</title>
+</head>
+<body>
+    {% include "_nav.html" %}
+    <div class="meta-mlh-banner">
+        <img src="{{ url_for('static', filename='img/Meta_Platforms_Inc._logo.svg') }}" alt="Meta Logo" loading="lazy">
+        <span class="banner-text">X</span>
+        <img src="{{ url_for('static', filename='img/mlh-logo-color.png') }}" alt="MLH Logo" loading="lazy">
+    </div>
+    <main class="projects-main fade-in">
+        <header class="projects-header" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1em;">
+            <h1 style="margin:0;font-size:2.5rem;font-weight:700;">Projects</h1>
+            <a href="https://github.com/ethanvillalovoz" target="_blank" rel="noopener noreferrer" class="btn">View GitHub</a>
+        </header>
+        <p class="subtitle" style="margin-top:0.5em;">A showcase of my personal and technical projects.</p>
+        <section class="projects-gallery">
+            <h2 style="font-size:1.5rem;font-weight:600;margin-bottom:0.5em;">Project Gallery</h2>
+            <div class="projects-list">
+                {% for project in projects %}
+                <article class="project-item">
+                    <img src="{{ project.image }}" alt="{{ project.title }}" class="project-img" style="width:160px;height:120px;object-fit:cover;border-radius:8px;margin-bottom:1em;">
+                    <div class="project-title-row">
+                        <span class="project-title">{{ project.title }}</span>
+                        {% if project.date %}<span class="project-date">{{ project.date }}</span>{% endif %}
+                        {% if project.status %}<span class="project-status">{{ project.status }}</span>{% endif %}
+                    </div>
+                    <div class="project-links" style="margin-bottom:0.5em;">
+                        {% for link in project.extraLinks %}
+                        <a href="{{ link.url }}" class="btn btn-link" target="_blank">{{ link.label }}</a>
+                        {% endfor %}
+                    </div>
+                    <div class="project-desc">{{ project.description }}</div>
+                    {% if project.features %}
+                    <ul class="project-features">
+                        {% for feature in project.features %}
+                        <li>{{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <div class="project-tags" style="margin-top:0.5em;display:flex;gap:0.5em;flex-wrap:wrap;">
+                        {% for tag in project.tags %}
+                        <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+    <button id="darkModeToggle" aria-label="Toggle dark mode" class="btn">🌙</button>
+    <script>
+    // Dark mode toggle (same as research page)
+    const darkModeBtn = document.getElementById('darkModeToggle');
+    if (darkModeBtn) {
+      const setTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        darkModeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+      };
+      const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme(savedTheme);
+      darkModeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
+    </script>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <span>&copy; {{ current_year }} Ethan Villalovoz</span>
+            <span class="footer-links">
+                <a href="/" aria-label="Home">Home</a> |
+                <a href="/about" aria-label="About">About</a> |
+                <a href="/contact" aria-label="Contact">Contact</a>
+            </span>
+        </div>
+    </footer>
+</body>
+</html>

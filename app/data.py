@@ -160,3 +160,45 @@ research_papers = [
     },
     # Add more papers as needed
 ]
+
+projects = [
+    {
+        "title": "DDPG: Deep Deterministic Policy Gradient (TensorFlow 2.x)",
+        "description": "A clean and modular reimplementation of the DDPG reinforcement learning algorithm (Lillicrap et al., 2015) using modern TensorFlow 2.x APIs, compatible with Gym environments, GPU acceleration, and interactive analysis notebooks.",
+        "image": "/static/img/projects/DDPG_padded.png",
+        "tags": ["Reinforcement Learning", "DDPG", "TensorFlow", "OpenAI Gym"],
+        "features": [
+            "Modular implementation of actor-critic, buffer, and noise components",
+            "Compatible with Gym ≥ 0.26, CPU/GPU, and Apple Silicon (M1–M4)",
+            "Colab/Binder-ready for easy reproducibility and visualization",
+            "Includes logging, learning curves, and training metrics (e.g., Pendulum-v1)",
+        ],
+        "extraLinks": [
+            {"label": "GitHub", "url": "https://github.com/ethanvillalovoz/ddpg-paper-reimplementation"},
+            {"label": "Colab Notebook", "url": "https://colab.research.google.com/github/ethanvillalovoz/ddpg-paper-reimplementation/blob/main/notebooks/DDPG_Analysis.ipynb"},
+            {"label": "Original Paper", "url": "https://arxiv.org/abs/1509.02971"},
+        ],
+        "date": "May 2025",
+        "status": "Completed",
+    },
+    {
+        "title": "ACME10-HE-RAGApp: RAG with Vector Search, Knowledge Graphs, and LLMs",
+        "description": "A full-stack Retrieval-Augmented Generation (RAG) application developed for HackerEarth that integrates vector search (FAISS), knowledge graphs (DBpedia), and OpenAI’s LLM to generate traceable, context-rich answers from a Wikipedia-based knowledge base.",
+        "image": "/static/img/projects/RAG_flowchart.jpeg",
+        "tags": ["LLM", "RAG", "Vector Search", "Knowledge Graph", "Full-Stack", "NLP"],
+        "features": [
+            "Developed for HackerEarth using 10,000+ Wikipedia articles",
+            "FAISS-based vector search for semantic retrieval",
+            "Knowledge graph context enhancement with DBpedia and SPARQL",
+            "OpenAI LLM for coherent and natural language answers",
+            "Dockerized deployment with local dev option",
+        ],
+        "extraLinks": [
+            {"label": "GitHub", "url": "https://github.com/mollyiverson/ACME10-HE-RAGApp"},
+            {"label": "Final Report", "url": "https://github.com/mollyiverson/ACME10-HE-RAGApp/blob/main/docs/project-report/RAGApp-FinalReport.pdf"},
+        ],
+        "date": "May 2025",
+        "status": "Completed",
+    },
+    # Uncomment and add more projects as needed
+]

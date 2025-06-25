@@ -445,3 +445,23 @@ a:hover {
   border-radius: 8px;
   padding: 2px 6px;
 }
+
+#darkModeToggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  font-size: 1rem;
+  padding: 8px 20px;
+  border-radius: 6px;
+  background: #1976d2 !important; /* Constant blue background, matches button */
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+#darkModeToggle:hover, #darkModeToggle:focus {
+  background: #1565c0 !important; /* Constant hover color, matches button hover */
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(21,101,192,0.15);
+}
