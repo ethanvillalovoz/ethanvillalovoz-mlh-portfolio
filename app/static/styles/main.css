@@ -236,3 +236,18 @@ body {
     background: #f9f9f9;
     border-radius: 8px;
 }
+
+/* Fade-in animation for sections */
+.fade-in { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.8s forwards; }
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.3s; }
+.fade-in:nth-child(4) { animation-delay: 0.4s; }
+.fade-in:nth-child(5) { animation-delay: 0.5s; }
+@keyframes fadeInUp {
+  to { opacity: 1; transform: none; }
+}
+
+/* Counter card hover effect */
+.counter-card { transition: box-shadow 0.2s; }
+.counter-card:hover { box-shadow: 0 4px 24px rgba(24,119,242,0.15); }

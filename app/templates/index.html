@@ -31,143 +31,57 @@
     </div>
 
     {% block content %}
-    <div class="profile fade-in" style="margin-bottom: 0;">
-        <div id="profile-picture" class="profile-picture">
-            <img src="{{ url_for('static', filename='img/profile.jpeg') }}" alt="Ethan Villalovoz's profile photo">
-        </div>
-        <h1 style="margin-bottom: 0.5em;">Hi, I'm Ethan Villalovoz</h1>
-        <h2 class="subtitle" style="margin-bottom: 0.5em;">AI/ML Researcher &amp; Engineer</h2>
-        <p class="welcome" style="margin-bottom: 0.5em;">Welcome! Explore my research, projects, and journey here!</p>
-    </div>
-
-    <section class="about-me fade-in" style="margin-top: 0; margin-bottom: 2.5em;">
-        <p>
-            I am a recent graduate in Computer Science from Washington State University with a minor in Mathematics. My research spans robotics, machine learning, and AI safety, with a focus on reinforcement learning, human-AI collaboration, and large language models.
-        </p>
-        <p>
-            I’ve conducted research at Carnegie Mellon University (HARP Lab) on hierarchical reward learning, Oregon State University (CHARISMA Lab) on multi-robot navigation, and completed a software engineering internship at Google (STEP Intern), where I built scalable data processing and visualization systems to support internal analytics.
-        </p>
-        <p>
-            I am currently seeking full-time opportunities in AI/ML research and engineering while preparing to apply for M.S. programs in Spring 2026.
-        </p>
-        <p>
-            Please feel free to reach out about research, collaboration, or any advice I can help with!
-        </p>
-        <p class="font-bold mt-8">Ethan Villalovoz</p>
-    </section>
-
-    <!-- Animated Counters Section -->
-    <section class="fade-in" style="display: flex; justify-content: center; gap: 2.5em; margin-bottom: 2.5em;">
-        <div class="counter-card" style="background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(24,119,242,0.07); padding: 1.2em 2em; text-align: center;">
-            <div class="counter" id="pubs-counter" style="font-size:2.2em; font-weight:700; color:#1877F2;">0</div>
-            <div style="font-size:1.1em;">Publications</div>
-        </div>
-        <div class="counter-card" style="background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(24,119,242,0.07); padding: 1.2em 2em; text-align: center;">
-            <div class="counter" id="interns-counter" style="font-size:2.2em; font-weight:700; color:#FFD700;">0</div>
-            <div style="font-size:1.1em;">Internships</div>
-        </div>
-        <div class="counter-card" style="background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(24,119,242,0.07); padding: 1.2em 2em; text-align: center;">
-            <div class="counter" id="talks-counter" style="font-size:2.2em; font-weight:700; color:#10b981;">0</div>
-            <div style="font-size:1.1em;">Talks Given</div>
-        </div>
-    </section>
-
-    <!-- Featured Project Card -->
-    <section class="fade-in" style="max-width: 700px; margin: 0 auto 2.5em auto;">
-        <div class="card mlh" style="padding:2em;">
-            <h2 style="margin-top:0;">Featured Project</h2>
-            <h3 style="margin-bottom:0.5em;">Multi-Robot Navigation with Deep RL</h3>
-            <p style="margin-bottom:0.5em;">Developed a scalable multi-robot navigation system using deep reinforcement learning, deployed in simulation and on real robots at Oregon State University (CHARISMA Lab).</p>
-            <a href="#" class="button" style="background:#1877F2;color:#fff;">View Project</a>
-        </div>
-    </section>
-
-    <section class="news-section fade-in" style="max-width: 700px; margin: 0 auto 2em auto; padding: 1.5em 1em 2em 1em; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(24,119,242,0.07);">
-        <h2 class="mlh" style="margin-top: 0;">News</h2>
-        <ul class="news-list" style="margin-bottom: 1.5em;" id="news-list">
-            {% for item in news %}
-                <li class="news-item{% if item.hidden %} hidden-news{% endif %}"{% if item.hidden %} style="margin-bottom: 0.7em; display:none;"{% else %} style="margin-bottom: 0.7em;"{% endif %}><b>{{ item.date }}:</b> {{ item.content|safe }}</li>
-            {% endfor %}
-        </ul>
-        {% if hidden_news|length > 0 %}
-            <button id="toggleNewsBtn" class="text-primary underline font-medium transition-colors duration-150 hover:text-primary-dark hover:underline hover:opacity-80" style="margin-top:1em;">
-                ▼ Show More
-            </button>
-        {% endif %}
-    </section>
-
-    <!-- Contact Form -->
-    <section class="fade-in" style="max-width: 700px; margin: 0 auto 2.5em auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(24,119,242,0.07); padding:2em;">
-        <h2 style="margin-top:0;">Contact Me</h2>
-        <form method="post" action="/contact" style="display:flex; flex-direction:column; gap:1em;">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required style="padding:0.5em; border-radius:6px; border:1px solid #ccc;">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required style="padding:0.5em; border-radius:6px; border:1px solid #ccc;">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" required style="padding:0.5em; border-radius:6px; border:1px solid #ccc;"></textarea>
-            <button type="submit" class="button" style="width:fit-content;align-self:flex-end;">Send</button>
-        </form>
-    </section>
-
-    <style>
-    .fade-in { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.8s forwards; }
-    .fade-in:nth-child(1) { animation-delay: 0.1s; }
-    .fade-in:nth-child(2) { animation-delay: 0.2s; }
-    .fade-in:nth-child(3) { animation-delay: 0.3s; }
-    .fade-in:nth-child(4) { animation-delay: 0.4s; }
-    .fade-in:nth-child(5) { animation-delay: 0.5s; }
-    @keyframes fadeInUp {
-      to { opacity: 1; transform: none; }
-    }
-    .counter-card { transition: box-shadow 0.2s; }
-    .counter-card:hover { box-shadow: 0 4px 24px rgba(24,119,242,0.15); }
-    </style>
-    <script>
-    // Animated counters
-    function animateCounter(id, target) {
-      let el = document.getElementById(id);
-      let count = 0;
-      let step = Math.ceil(target / 40);
-      let interval = setInterval(function() {
-        count += step;
-        if (count >= target) {
-          el.textContent = target;
-          clearInterval(interval);
-        } else {
-          el.textContent = count;
+        {% include "_profile.html" %}
+        {% include "_about.html" %}
+        {% include "_counters.html" %}
+        {% include "_featured_project.html" %}
+        {% include "_news.html" %}
+        {% include "_contact_form.html" %}
+        <script>
+        // Animated counters
+        function animateCounter(id, target) {
+          let el = document.getElementById(id);
+          let count = 0;
+          let step = Math.ceil(target / 40);
+          let interval = setInterval(function() {
+            count += step;
+            if (count >= target) {
+              el.textContent = target;
+              clearInterval(interval);
+            } else {
+              el.textContent = count;
+            }
+          }, 30);
         }
-      }, 30);
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      animateCounter('pubs-counter', 5);
-      animateCounter('interns-counter', 3);
-      animateCounter('talks-counter', 7);
-      // Fade-in animation for sections (only on initial load)
-      document.querySelectorAll('.fade-in').forEach(function(el, i) {
-        el.style.animationDelay = (i * 0.15) + 's';
-        el.addEventListener('animationend', function handler() {
-          el.classList.remove('fade-in');
-          el.removeEventListener('animationend', handler);
-        });
-      });
-      // News toggle logic (no reload)
-      const toggleBtn = document.getElementById('toggleNewsBtn');
-      let showAll = false;
-      if (toggleBtn) {
-        toggleBtn.addEventListener('click', function() {
-          showAll = !showAll;
-          document.querySelectorAll('.hidden-news').forEach(function(el) {
-            el.style.display = showAll ? '' : 'none';
+        document.addEventListener('DOMContentLoaded', function() {
+          animateCounter('pubs-counter', 5);
+          animateCounter('interns-counter', 3);
+          animateCounter('talks-counter', 7);
+          // Fade-in animation for sections (only on initial load)
+          document.querySelectorAll('.fade-in').forEach(function(el, i) {
+            el.style.animationDelay = (i * 0.15) + 's';
+            el.addEventListener('animationend', function handler() {
+              el.classList.remove('fade-in');
+              el.removeEventListener('animationend', handler);
+            });
           });
-          toggleBtn.innerHTML = showAll ? '▲ Show Less' : '▼ Show More';
-          // Optionally scroll to news section
-          const newsSection = document.querySelector('.news-section');
-          if (newsSection) newsSection.scrollIntoView({behavior: 'smooth'});
+          // News toggle logic (no reload)
+          const toggleBtn = document.getElementById('toggleNewsBtn');
+          let showAll = false;
+          if (toggleBtn) {
+            toggleBtn.addEventListener('click', function() {
+              showAll = !showAll;
+              document.querySelectorAll('.hidden-news').forEach(function(el) {
+                el.style.display = showAll ? '' : 'none';
+              });
+              toggleBtn.innerHTML = showAll ? '▲ Show Less' : '▼ Show More';
+              // Optionally scroll to news section
+              const newsSection = document.querySelector('.news-section');
+              if (newsSection) newsSection.scrollIntoView({behavior: 'smooth'});
+            });
+          }
         });
-      }
-    });
-    </script>
+        </script>
     {% endblock %}
 </body>
 </html>
