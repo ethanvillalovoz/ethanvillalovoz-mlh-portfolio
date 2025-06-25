@@ -87,3 +87,56 @@ places = [
     {"city": "Sunnyvale, CA", "coords": [37.3688, -122.0363]},
     {"city": "Corvallis, OR", "coords": [44.5646, -123.2620]}
 ]
+
+news_items = [
+    {
+        "date": "06/2025",
+        "content": 'Gave an alumni talk for the <a href="https://marc.wsu.edu/" class="text-primary underline">WSU MARC</a> & <a href="https://mira.wsu.edu/" class="text-primary underline">MIRA</a> program on my research journey and grad school advice.',
+    },
+    {
+        "date": "06/2025",
+        "content": 'I joined the <a href="https://fellowship.mlh.io/programs/production-engineering-sre" class="text-primary underline">Meta x MLH Fellowship</a> as a Production Engineering Fellow!',
+    },
+    {
+        "date": "05/2025",
+        "content": "Graduated from Washington State University with a B.S. in Computer Science and a minor in Mathematics. Go Cougs!",
+    },
+    {
+        "date": "06/2024",
+        "content": 'This summer, I will be conducting research at Carnegie Mellon University as part of the <a href="https://riss.ri.cmu.edu/" class="text-primary underline">CMU RISS</a> program.',
+    },
+    {
+        "date": "09/2023",
+        "content": 'I will be participating in Google Research\'s <a href="https://research.google/programs-and-events/csrmp/" class="text-primary underline">CS Research Mentorship Program</a> during the Fall semester.',
+    },
+    {
+        "date": "07/2023",
+        "content": 'I am thrilled and sincerely grateful to have been awarded the <a href="https://buildyourfuture.withgoogle.com/scholarships/generation-google-scholarship" class="text-primary underline">Generation Google Scholarship</a>.',
+    },
+    # Hidden news items
+    {
+        "date": "07/2023",
+        "content": "My contributions to the work I completed at Oregon State University have been accepted for presentation at <b>IROS 2023</b>!",
+        "hidden": True,
+    },
+    {
+        "date": "05/2023",
+        "content": 'I will be interning as a <a href="https://buildyourfuture.withgoogle.com/programs/step" class="text-primary underline">STEP Intern</a> at Google.',
+        "hidden": True,
+    },
+    {
+        "date": "05/2023",
+        "content": 'I became a MARC Scholar through the <a href="https://marc.wsu.edu/" class="text-primary underline">NIH Fellowship</a>.',
+        "hidden": True,
+    },
+    {
+        "date": "06/2022",
+        "content": 'I will be conducting research at Oregon State University as part of the <a href="https://engineering.oregonstate.edu/CoRIS/reu-robots-real-world" class="text-primary underline">REU: Robots in the Real World</a> program.',
+        "hidden": True,
+    },
+    {
+        "date": "07/2021",
+        "content": 'I became an ESTEEMED Scholar through the <a href="https://mira.wsu.edu/" class="text-primary underline">NIH Fellowship</a>.',
+        "hidden": True,
+    },
+]

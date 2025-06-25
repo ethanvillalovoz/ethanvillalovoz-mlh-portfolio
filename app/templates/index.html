@@ -24,111 +24,79 @@
 <body>
     {% include "_nav.html" %}
 
-    <!-- <header class="nav-bar">
-        <div class="nav-content">
-            <a href="/">
-                <div class="nav-logo">
-                    <img src="{{ url_for('static', filename='img/logo.svg') }}" />
-                </div>
-            </a>
-        </div>
-    </header> -->
-
     <div class="meta-mlh-banner">
         <img src="{{ url_for('static', filename='img/Meta_Platforms_Inc._logo.svg') }}" alt="Meta Logo">
         <span class="banner-text">X</span>
         <img src="{{ url_for('static', filename='img/mlh-logo-color.png') }}" alt="MLH Logo">
     </div>
 
-    <div class="profile">
+    <div class="profile" style="margin-bottom: 0;">
         <div id="profile-picture" class="profile-picture">
-            <img src="{{ url_for('static', filename='img/profile.jpeg') }}" alt="{{ user.name }}'s profile photo">
+            <img src="{{ url_for('static', filename='img/profile.jpeg') }}" alt="Ethan Villalovoz's profile photo">
         </div>
-        <h1>{{ title }}</h1>
+        <h1 style="margin-bottom: 0.5em;">Hi, I'm Ethan Villalovoz</h1>
+        <h2 class="subtitle" style="margin-bottom: 0.5em;">AI/ML Researcher &amp; Engineer</h2>
+        <p class="welcome" style="margin-bottom: 0.5em;">Welcome! Explore my research, projects, and journey here!</p>
     </div>
 
-    <section class="about-me">
-        <h2 id="about-me-heading" class="mlh">About Me <span class="badge-meta">Meta</span></h2>
+    <section class="about-me" style="margin-top: 0; margin-bottom: 2.5em;">
         <p>
-            I am a recent graduate in Computer Science from Washington State University with a minor in Mathematics.
-            My research spans robotics, machine learning, and AI safety, with a focus on reinforcement learning,
-            human-AI collaboration, and large language models.
+            I am a recent graduate in Computer Science from Washington State University with a minor in Mathematics. My research spans robotics, machine learning, and AI safety, with a focus on reinforcement learning, human-AI collaboration, and large language models.
         </p>
         <p>
-            I’ve conducted research at Carnegie Mellon University (HARP Lab) on hierarchical reward learning, Oregon
-            State University (CHARISMA Lab) on multi-robot navigation, and completed a software engineering
-            internship at Google (STEP Intern), where I built scalable data processing and visualization systems to
-            support internal analytics.
+            I’ve conducted research at Carnegie Mellon University (HARP Lab) on hierarchical reward learning, Oregon State University (CHARISMA Lab) on multi-robot navigation, and completed a software engineering internship at Google (STEP Intern), where I built scalable data processing and visualization systems to support internal analytics.
         </p>
         <p>
-            I am currently seeking full-time opportunities in AI/ML research and engineering while preparing to apply
-            for M.S. programs in Spring 2026.
+            I am currently seeking full-time opportunities in AI/ML research and engineering while preparing to apply for M.S. programs in Spring 2026.
         </p>
         <p>
             Please feel free to reach out about research, collaboration, or any advice I can help with!
         </p>
+        <p class="font-bold mt-8">Ethan Villalovoz</p>
     </section>
 
-    <section class="work-experience">
-        <h2 class="mlh">Work Experience <span class="badge-mlh">MLH</span></h2>
-        {% for job in work_experiences %}
-        <div class="job card mlh">
-            <h3>{{ job.role }} — <span style="font-weight:normal;">{{ job.company }}</span></h3>
-            <p class="job-dates">{{ job.dates }} | {{ job.location }}</p>
-            {% if job.responsibilities %}
-            <ul>
-                {% for responsibility in job.responsibilities %}
-                <li>{{ responsibility }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-        {% endfor %}
-    </section>
-
-    <section class="education-section">
-        <h2 class="mlh">Education <span class="badge-meta">Meta</span></h2>
-        <ul class="education-list">
-            {% for edu in education %}
-            <li class="education-item card">
-                <strong>{{ edu.school }}</strong> <span class="education-year">({{ edu.years }})</span><br>
-                {{ edu.degree }}<br>
-                {{ edu.location }}<br>
-                {{ edu.gpa }}<br>
-                {% if edu.details %}
-                <ul>
-                    {% for detail in edu.details %}
-                    <li>{{ detail }}</li>
-                    {% endfor %}
-                </ul>
+    <section class="news-section" style="max-width: 700px; margin: 0 auto 2em auto; padding: 1.5em 1em 2em 1em; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(24,119,242,0.07);">
+        <h2 class="mlh" style="margin-top: 0;">News</h2>
+        <ul class="news-list" style="margin-bottom: 1.5em;">
+            {% for item in news %}
+                {% if not item.hidden or show_all_news %}
+                    <li style="margin-bottom: 0.7em;"><b>{{ item.date }}:</b> {{ item.content|safe }}</li>
                 {% endif %}
-            </li>
             {% endfor %}
+            {% if not show_all_news and hidden_news|length > 0 %}
+                <li style="list-style: none; margin-top: 1em;">
+                    <form id="showAllNewsForm" method="get" style="display:inline;">
+                        <input type="hidden" name="show_all_news" value="true">
+                        <button type="submit" class="text-primary underline font-medium transition-colors duration-150 hover:text-primary-dark hover:underline hover:opacity-80">
+                            ▼ Show More
+                        </button>
+                    </form>
+                </li>
+            {% elif show_all_news %}
+                <li style="list-style: none; margin-top: 1em;">
+                    <form id="showAllNewsForm" method="get" style="display:inline;">
+                        <input type="hidden" name="show_all_news" value="false">
+                        <button type="submit" class="text-primary underline font-medium transition-colors duration-150 hover:text-primary-dark hover:underline hover:opacity-80">
+                            ▲ Show Less
+                        </button>
+                    </form>
+                </li>
+            {% endif %}
         </ul>
     </section>
-
-    <section class="map-section card mlh" role="region" aria-label="Interactive map of places I've visited">
-        <h2 class="mlh">Places I've Visited <span class="badge-mlh">MLH</span></h2>
-        <div id="map"></div>
-    </section>
-
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        // Center the map (example: USA)
-        const map = L.map('map').setView([39.8283, -98.5795], 4);
-
-        // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-
-        // Example places (replace with your own)
-        var places = JSON.parse('{{ places|default([])|tojson | safe }}');
-        places.forEach(function(place) {
-            L.marker(place.coords).addTo(map)
-                .bindPopup(place.city);
-        });
+      // Optional: Scroll to news section after toggling
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('showAllNewsForm');
+        if (form) {
+          form.addEventListener('submit', function() {
+            setTimeout(function() {
+              const newsSection = document.querySelector('.news-section');
+              if (newsSection) newsSection.scrollIntoView({behavior: 'smooth'});
+            }, 100);
+          });
+        }
+      });
     </script>
 </body>
-
 </html>

@@ -52,14 +52,28 @@ body {
 .profile {
     background-color: #1d539f !important;
     text-align: center;
-    height: 320px;
-    margin-bottom: 50px;
+    height: auto;
+    margin-bottom: 0px;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }
 
 .profile h1 {
         font-size: 50px;
         font-weight: 700;
         color: white;
+        margin-bottom: 0.5em;
+        margin-top: 0;
+}
+
+.profile h2.subtitle {
+    margin-bottom: 0.5em;
+    color: #fff;
+}
+
+.profile .welcome {
+    margin-bottom: 0.5em;
+    color: #e0e7ff;
 }
 
 .profile img {
@@ -75,6 +89,9 @@ body {
 .profile .profile-picture {
     margin-bottom: 30px;
     height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .banner {
@@ -116,10 +133,12 @@ body {
 
 .about-me {
     max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
+    margin: 2.5rem auto 2.5rem auto;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
     background: #f9f9f9;
     border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-size: 1.1rem;
 }
 
 .hobbies-list {
