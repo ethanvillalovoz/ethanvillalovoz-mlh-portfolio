@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Personal Portfolio">
+    <meta property="og:description" content="My Personal Portfolio">
+    <meta property="og:url" content="{{ url }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/meta-mlh.css') }}">
+    <link rel='icon' href="{{ url_for('static', filename='img/favicon.ico') }}" type='image/x-icon' />
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+</head>
+<body>
+    {% include "_nav.html" %}
+    <div class="meta-mlh-banner">
+        <img src="{{ url_for('static', filename='img/Meta_Platforms_Inc._logo.svg') }}" alt="Meta Logo">
+        <span class="banner-text">X</span>
+        <img src="{{ url_for('static', filename='img/mlh-logo-color.png') }}" alt="MLH Logo">
+    </div>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer style="background:#1d539f;color:#fff;text-align:center;padding:1.5em 0;margin-top:2em;">
+        <div style="margin-bottom:0.5em;">
+            <a href="mailto:ethanvillalovoz@gmail.com" style="color:#FFD700;margin:0 1em;">Email</a>
+            <a href="https://github.com/ethanvillalovoz" style="color:#FFD700;margin:0 1em;">GitHub</a>
+            <a href="https://www.linkedin.com/in/ethanvillalovoz/" style="color:#FFD700;margin:0 1em;">LinkedIn</a>
+        </div>
+        <div style="font-size:0.95em;">&copy; {{ 2025 }} Ethan Villalovoz. All rights reserved.</div>
+    </footer>
+</body>
+</html>

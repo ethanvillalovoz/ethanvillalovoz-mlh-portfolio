@@ -30,6 +30,7 @@
         <img src="{{ url_for('static', filename='img/mlh-logo-color.png') }}" alt="MLH Logo">
     </div>
 
+    {% block content %}
     <div class="profile" style="margin-bottom: 0;">
         <div id="profile-picture" class="profile-picture">
             <img src="{{ url_for('static', filename='img/profile.jpeg') }}" alt="Ethan Villalovoz's profile photo">
@@ -84,6 +85,8 @@
             {% endif %}
         </ul>
     </section>
+    {% endblock %}
+
     <script>
       // Optional: Scroll to news section after toggling
       document.addEventListener('DOMContentLoaded', function() {
