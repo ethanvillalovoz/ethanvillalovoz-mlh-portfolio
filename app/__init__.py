@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, flash, url_for
 import os
 from .data import work_experiences, hobbies, education, places  # Import education and places
 from .data import news_items
@@ -60,8 +60,18 @@ def about_page():
     return render_template("about.html")
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact_page():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+        if not name or not email or not message:
+            flash("All fields are required.", "error")
+            return redirect(url_for("index") + "#contactForm")
+        # Here you would handle sending the message (e.g., email, save to DB, etc.)
+        flash("Thank you for reaching out! Your message has been sent.", "success")
+        return redirect(url_for("index") + "#contactForm")
     return render_template("contact.html")
 
 

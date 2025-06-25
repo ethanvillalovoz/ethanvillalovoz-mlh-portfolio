@@ -1,9 +1,42 @@
+:root {
+  --background: #f4f6fb;
+  --foreground: #222;
+  --primary: #1976d2;
+  --accent: #1565c0;
+  --card-bg: #fff;
+  --card-border: #e0e0e0;
+  --banner-bg: #2563eb;
+  --banner-fg: #fff;
+  --input-bg: #fff;
+  --input-fg: #222;
+  --input-border: #bdbdbd;
+  --footer-bg: #222;
+  --footer-fg: #fff;
+}
+[data-theme="dark"] {
+  --background: #181a20;
+  --foreground: #f4f6fb;
+  --primary: #90caf9;
+  --accent: #42a5f5;
+  --card-bg: #23272f;
+  --card-border: #333a47;
+  --banner-bg: #111827;
+  --banner-fg: #90caf9;
+  --input-bg: #23272f;
+  --input-fg: #f4f6fb;
+  --input-border: #444b5a;
+  --footer-bg: #23272f;
+  --footer-fg: #90caf9;
+}
+
 p, h1, h2, h3, h4, h5, h6, button {
     font-family: "Roboto", serif;
 }
 
 body {
-    background-color: #f5f5f9;
+    background: var(--background);
+    color: var(--foreground);
+    background-color: var(--background);
     background-size: cover;
     width: auto; 
     overflow-x: hidden;
@@ -251,3 +284,164 @@ body {
 /* Counter card hover effect */
 .counter-card { transition: box-shadow 0.2s; }
 .counter-card:hover { box-shadow: 0 4px 24px rgba(24,119,242,0.15); }
+
+/* Footer styles */
+.site-footer {
+  width: 100%;
+  background: var(--footer-bg);
+  color: var(--footer-fg);
+  padding: 18px 0 12px 0;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 40px;
+  letter-spacing: 0.02em;
+}
+.site-footer .footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.site-footer .footer-links a {
+  color: #90caf9;
+  text-decoration: none;
+  margin: 0 4px;
+  transition: color 0.2s;
+}
+.site-footer .footer-links a:hover {
+  color: #42a5f5;
+  text-decoration: underline;
+}
+.flash-messages {
+  max-width: 420px;
+  margin: 18px auto 0 auto;
+  text-align: center;
+}
+.flash {
+  padding: 10px 18px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 1.05rem;
+  display: inline-block;
+}
+.flash-success {
+  background: #e8f5e9;
+  color: #388e3c;
+  border: 1px solid #a5d6a7;
+}
+.flash-error {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+@media (max-width: 600px) {
+  .site-footer {
+    font-size: 0.95rem;
+    padding: 14px 0 8px 0;
+  }
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.btn, button, input[type="submit"] {
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+.btn:hover, button:hover, input[type="submit"]:hover {
+  background: #1565c0;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(21,101,192,0.12);
+}
+a {
+  transition: color 0.2s;
+}
+a:hover {
+  color: #1976d2;
+  text-decoration: underline;
+}
+
+/* --- DARK MODE OVERRIDES FOR META-MLH THEME --- */
+[data-theme="dark"] .meta-mlh-banner {
+  background: linear-gradient(90deg, #23272f 0%, #2563eb 60%, #FFD700 100%);
+  color: #FFD700;
+  border-bottom: 2px solid var(--card-border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+[data-theme="dark"] .meta-mlh-banner img {
+  background: transparent;
+  filter: none;
+}
+[data-theme="dark"] .meta-mlh-banner .banner-text {
+  color: #FFD700;
+}
+
+[data-theme="dark"] .profile, [data-theme="dark"] .about-me, [data-theme="dark"] .news-section, [data-theme="dark"] .contact-form, [data-theme="dark"] .card, [data-theme="dark"] .hobby-card, [data-theme="dark"] .education-section, [data-theme="dark"] .map-section {
+  background: #23272f !important;
+  color: #f4f6fb !important;
+  border: 1px solid #333a47 !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+[data-theme="dark"] .profile h1, [data-theme="dark"] .profile h2.subtitle, [data-theme="dark"] .news-section h2, [data-theme="dark"] .contact-form label {
+  color: #90caf9 !important;
+}
+[data-theme="dark"] .news-section ul, [data-theme="dark"] .news-section li, [data-theme="dark"] .news-section a {
+  color: #e3eafc !important;
+}
+[data-theme="dark"] .news-section a:hover {
+  color: #FFD700 !important;
+}
+[data-theme="dark"] input, [data-theme="dark"] textarea {
+  background: #181a20 !important;
+  color: #f4f6fb !important;
+  border: 1px solid #444b5a !important;
+}
+[data-theme="dark"] input:focus, [data-theme="dark"] textarea:focus {
+  outline: 2px solid #90caf9 !important;
+}
+[data-theme="dark"] .site-footer {
+  background: #181a20 !important;
+  color: #90caf9 !important;
+}
+[data-theme="dark"] .site-footer .footer-links a {
+  color: #90caf9 !important;
+}
+[data-theme="dark"] .site-footer .footer-links a:hover {
+  color: #FFD700 !important;
+}
+
+/* Light mode: make meta-mlh-banner background transparent */
+.meta-mlh-banner {
+  background: linear-gradient(90deg, transparent 0%, #1877F2 60%, #FFD700 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #222;
+}
+.meta-mlh-banner img {
+  background: transparent;
+  border-radius: 8px;
+  padding: 2px 6px;
+}
+
+/* Dark mode: fix contact card and background */
+[data-theme="dark"] body {
+  background: #181a20 !important;
+}
+
+/* Banner: blend SVG logos into banner in both modes */
+.meta-mlh-banner img {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 8px;
+  padding: 2px 6px;
+}
