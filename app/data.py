@@ -140,3 +140,23 @@ news_items = [
         "hidden": True,
     },
 ]
+
+research_papers = [
+    {
+        "title": "Social Triangles and Aggressive Lines: Multi-Robot Formations Impact Navigation and Approach",
+        "authors": [
+            "Alexandra Bacula",
+            "Ethan Villalovoz",
+            "Deanna Flynn",
+            "Ankur Mehta",
+            "Heather Knight",
+        ],
+        "conference": "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2023",
+        "pdf": "/static/data/research/2023_IROS_Social_Triangles_Agressive_Lines_bacula.pdf",
+        "bibtex": "/static/data/research/2023_IROS_Social_Triangles_Agressive_Lines_bacula.bib",
+        "image": "/static/data/research/STAL_Multi_Robot_Formations.jpeg",
+        "description": "Investigates how different multi-robot formations affect navigation and approach behaviors in social environments. Demonstrates the impact of formation geometry on human-robot interaction and navigation efficiency.",
+        "tags": ["Robotics", "Multi-Robot", "Human-Robot Interaction"],
+    },
+    # Add more papers as needed
+]

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Research | Personal Portfolio">
+    <meta property="og:description" content="Research page for Ethan Villalovoz">
+    <meta property="og:url" content="{{ url }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/research.css') }}">
+    <link rel='icon' href="{{ url_for('static', filename='img/favicon.ico') }}" type='image/x-icon' />
+    <title>Research | {{ title }}</title>
+</head>
+<body>
+    {% include "_nav.html" %}
+    <div class="meta-mlh-banner">
+        <img src="{{ url_for('static', filename='img/Meta_Platforms_Inc._logo.svg') }}" alt="Meta Logo" loading="lazy">
+        <span class="banner-text">X</span>
+        <img src="{{ url_for('static', filename='img/mlh-logo-color.png') }}" alt="MLH Logo" loading="lazy">
+    </div>
+    <main class="research-main fade-in">
+        <header class="research-header" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1em;">
+            <h1 style="margin:0;font-size:2.5rem;font-weight:700;">Research</h1>
+            <a href="https://scholar.google.com/citations?user=CavKFp4AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="btn btn-link">Google Scholar</a>
+        </header>
+        <p class="subtitle" style="margin-top:0.5em;">A list of my research papers and publications.</p>
+        <section class="research-interests" style="margin-bottom:2em;">
+            <h2 style="font-size:1.5rem;font-weight:600;margin-bottom:0.5em;">Research Interests</h2>
+            <p style="font-size:1.1rem;">My research focuses on robotics, machine learning, AI safety, reinforcement learning, human-AI collaboration, and large language models. I am passionate about building intelligent systems that are robust, interpretable, and beneficial to society.</p>
+        </section>
+        <!-- Tag Filter -->
+        <div id="tagFilter" class="tag-filter" style="margin-bottom:2em;display:flex;flex-wrap:wrap;gap:0.5em;">
+            <button class="btn tag-btn active" data-tag="all">All</button>
+            <button class="btn tag-btn" data-tag="Robotics">🤖 Robotics</button>
+            <button class="btn tag-btn" data-tag="Multi-Robot">🤝 Multi-Robot</button>
+            <button class="btn tag-btn" data-tag="Human-Robot Interaction">🧑‍🤝‍🤖 Human-Robot Interaction</button>
+        </div>
+        <section class="research-list">
+            {% for paper in research_papers %}
+            <article class="research-item" data-tags="{{ paper.tags | join(',') }}">
+                <img src="{{ paper.image }}" alt="{{ paper.title }}" class="research-img" style="width:160px;height:120px;object-fit:cover;border-radius:8px;margin-bottom:1em;">
+                <a href="{{ paper.pdf }}" target="_blank" class="research-title">{{ paper.title }}</a>
+                <div class="authors">{{ paper.authors | join(', ') }}</div>
+                <div class="venue">{{ paper.conference }}</div>
+                <div class="links" style="margin:0.5em 0;">
+                    <a href="{{ paper.pdf }}" target="_blank" class="btn btn-link">PDF</a>
+                    <a href="{{ paper.bibtex }}" target="_blank" class="btn btn-link">BibTeX</a>
+                    <button class="btn btn-link copy-bibtex" data-bibtex="{{ paper.bibtex }}">Copy BibTeX</button>
+                </div>
+                <div class="desc">{{ paper.description }}</div>
+                <div class="tags" style="margin-top:0.5em;display:flex;gap:0.5em;flex-wrap:wrap;">
+                    {% for tag in paper.tags %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+    <button id="darkModeToggle" aria-label="Toggle dark mode" style="position:fixed;top:16px;right:16px;z-index:1000;" class="btn">🌙</button>
+    <script>
+    // Dark mode toggle (same as homepage)
+    const darkModeBtn = document.getElementById('darkModeToggle');
+    if (darkModeBtn) {
+      const setTheme = (theme) => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        darkModeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+      };
+      const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme(savedTheme);
+      darkModeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
+    // Tag filter logic
+    document.querySelectorAll('.tag-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        const tag = this.getAttribute('data-tag');
+        document.querySelectorAll('.research-item').forEach(item => {
+          if (tag === 'all' || item.getAttribute('data-tags').includes(tag)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+    // Copy BibTeX logic
+    document.querySelectorAll('.copy-bibtex').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const url = this.getAttribute('data-bibtex');
+        fetch(url).then(r => r.text()).then(text => {
+          navigator.clipboard.writeText(text);
+          this.textContent = 'Copied!';
+          setTimeout(() => { this.textContent = 'Copy BibTeX'; }, 1200);
+        });
+      });
+    });
+    </script>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <span>&copy; {{ current_year }} Ethan Villalovoz</span>
+            <span class="footer-links">
+                <a href="/" aria-label="Home">Home</a> |
+                <a href="/about" aria-label="About">About</a> |
+                <a href="/contact" aria-label="Contact">Contact</a>
+            </span>
+        </div>
+    </footer>
+</body>
+</html>
