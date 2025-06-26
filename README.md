@@ -55,11 +55,11 @@ This portfolio site features dynamic sections for About Me, Work Experience, Edu
 - Leaflet.js
 - HTML/CSS
 
-<!-- ## Visuals
+## Visuals
 
-![Homepage Screenshot](static/img/homepage_screenshot.png)
-![Hobbies Page Screenshot](static/img/hobbies_screenshot.png)
-![Map Screenshot](static/img/map_screenshot.png) -->
+![Homepage Screenshot](app/static/img/visuals/homepage.png)
+![Projects Page Screenshot](app/static/img/visuals/projects_page.png)
+![Timeline Screenshot](app/static/img/visuals/Timeline.png)
 
 ## QuickStart
 
@@ -101,8 +101,8 @@ Create a .env file using the example.env template (make a copy using the variabl
 
 Start flask development server
 ```bash
-$ export FLASK_ENV=development
-$ flask run
+export FLASK_ENV=development
+flask run
 ```
 
 You should get a response like this in the terminal:
@@ -140,8 +140,36 @@ app/
   __init__.py
   data.py
   templates/
+    _nav.html
+    _places_intro.html
+    about.html
+    contact.html
+    hobbies.html
+    index.html
+    places.html
+    projects.html
+    research.html
+    teaching.html
   static/
-tests/
+    img/
+      favicon.ico
+      logo.svg
+      ...
+    styles/
+      main.css
+      about.css
+      contact.css
+      hobbies.css
+      meta-mlh.css
+      places.css
+      projects.css
+      research.css
+      teaching.css
+    ...
+docs/
+  2024-06-22-session.md
+  2024-06-25-session.md
+example.env
 README.md
 requirements.txt
 ```
@@ -156,13 +184,13 @@ pytest
 
 *Note: Automated tests coming soon!*
 
-<!-- ## Roadmap
+## Roadmap
 
 - [ ] Add blog section
 - [ ] Add contact form
 - [ ] Improve accessibility
 - [ ] Add more automated tests
-- [ ] Enhance map features -->
+- [ ] Enhance map features
 
 ## Contribution Guidelines
 
@@ -172,7 +200,7 @@ Contributions are welcome! To contribute:
 - Create a new branch for your feature or bugfix
 - Open a pull request describing your changes
 
-For more details, see [CONTRIBUTING.md](CONTRIBUTING.md) (coming soon).
+For more details, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Please follow the code of conduct and respect the review process.
 
@@ -195,9 +223,16 @@ Example (replace with your own as needed):
 flowchart TD
     A[User] -->|Visits| B(Homepage)
     B --> C{Chooses Page}
-    C -->|Hobbies| D[Hobbies Page]
-    C -->|Map| E[Map Page]
-    C -->|About| F[About Page]
+    C -->|About| D[About Page]
+    C -->|Projects| E[Projects Page]
+    C -->|Research| F[Research Page]
+    C -->|Teaching| G[Teaching Page]
+    C -->|Hobbies| H[Hobbies Page]
+    C -->|Places| I[Places Page]
+    C -->|Contact| J[Contact Page]
+    D --> K[Timeline/Story]
+    H --> L[Hobby Cards]
+    I --> M[Interactive Map]
 ```
 
 Add your own diagrams to help explain project structure or user journeys!
