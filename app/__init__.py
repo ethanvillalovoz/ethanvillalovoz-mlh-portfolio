@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, flash, url_for
 import os
 from .data import work_experiences, hobbies, education, places  # Import education and places
-from .data import news_items, research_papers, projects  # Add projects import
+from .data import news_items, research_papers, projects, teaching_experiences  # Add teaching_experiences import
 from datetime import datetime
 
 app = Flask(__name__)
@@ -53,7 +53,7 @@ def projects_page():
 
 @app.route("/teaching")
 def teaching_page():
-    return render_template("teaching.html")
+    return render_template("teaching.html", teaching_experiences=teaching_experiences, current_year=datetime.now().year, title="Teaching")
 
 
 @app.route("/about")
