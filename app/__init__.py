@@ -76,6 +76,8 @@ def contact_page():
     return render_template("contact.html")
 
 
-@app.route("/places")
+from app.data import places
+
+@app.route('/places')
 def places_page():
-    return render_template("places.html")
+    return render_template("places.html", places=places, title="Places", current_year=2025)

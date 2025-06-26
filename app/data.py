@@ -82,10 +82,38 @@ education = [
 ]
 
 places = [
-    {"city": "Pullman, WA", "coords": [46.7298, -117.1817]},
-    {"city": "Pittsburgh, PA", "coords": [40.4406, -79.9959]},
-    {"city": "Sunnyvale, CA", "coords": [37.3688, -122.0363]},
-    {"city": "Corvallis, OR", "coords": [44.5646, -123.2620]}
+    {
+        "name": "Pullman, WA",
+        "lat": 46.7298,
+        "lng": -117.1817,
+        "location": "Washington State University",
+        "description": "Where I completed my undergraduate studies.",
+        "image": "img/timeline/Washington_State_icon.png"
+    },
+    {
+        "name": "Pittsburgh, PA",
+        "lat": 40.4406,
+        "lng": -79.9959,
+        "location": "Carnegie Mellon University",
+        "description": "Robotics Institute Summer Scholar.",
+        "image": "img/timeline/Carnegie_Mellon_icon.png"
+    },
+    {
+        "name": "Sunnyvale, CA",
+        "lat": 37.3688,
+        "lng": -122.0363,
+        "location": "Google STEP Internship",
+        "description": "Worked as a STEP Intern at Google.",
+        "image": "img/timeline/Google_icon.png"
+    },
+    {
+        "name": "Corvallis, OR",
+        "lat": 44.5646,
+        "lng": -123.2620,
+        "location": "Oregon State University",
+        "description": "Robots in the Real World Researcher.",
+        "image": "img/timeline/Oregon_State_icon.jpeg"
+    }
 ]
 
 news_items = [
