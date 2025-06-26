@@ -153,20 +153,16 @@
   color: #90caf9;
   border-bottom: 4px solid #90caf9;
 }
-[data-theme="dark"] .contact-card {
-  background: #90caf9;
-  color: #222;
-}
-[data-theme="dark"] .contact-card:hover, [data-theme="dark"] .contact-card:focus {
+[data-theme="dark"] .contact-card,
+[data-theme="dark"] .btn-link {
   background: #1976d2;
   color: #fff;
 }
-[data-theme="dark"] .btn-link {
-  background: #90caf9;
-  color: #222;
-}
-[data-theme="dark"] .btn-link:hover, [data-theme="dark"] .btn-link:focus {
-  background: #1976d2;
+[data-theme="dark"] .contact-card:hover,
+[data-theme="dark"] .contact-card:focus,
+[data-theme="dark"] .btn-link:hover,
+[data-theme="dark"] .btn-link:focus {
+  background: #1565c0;
   color: #fff;
 }
 [data-theme="dark"] .contact-bio-img {
