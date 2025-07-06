@@ -44,3 +44,12 @@
 - Portfolio site serves as the foundation for future MLH Fellowship activities
 - Practiced using Flask, Jinja templating, and GitHub collaboration workflows
 - Submission: GitHub repository link provided as assignment deliverable
+
+---
+
+## 📌 Notes for Resume or LinkedIn
+
+- Built a personal portfolio web app using Flask and Jinja templating, showcasing education, work experience, hobbies, and travel.
+- Practiced modern software engineering workflows with GitHub Issues, branches, and Pull Requests for collaborative development.
+- Implemented dynamic content rendering and modular design for easy extensibility.
+- Gained experience in Python virtual environments, dependency management, and Flask app deployment.
