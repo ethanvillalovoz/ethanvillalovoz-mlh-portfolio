@@ -3,9 +3,19 @@ import os
 from .data import work_experiences, hobbies, education, places  # Import education and places
 from .data import news_items, research_papers, projects, teaching_experiences  # Add teaching_experiences import
 from datetime import datetime
+from peewee import *
 
 app = Flask(__name__)
 
+mydb = MySQLDatabase(
+    os.getenv("MYSQL_DATABASE"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    host=os.getenv("MYSQL_HOST"),
+    port=3306
+)
+
+print(mydb)
 
 @app.route("/")
 def index():
