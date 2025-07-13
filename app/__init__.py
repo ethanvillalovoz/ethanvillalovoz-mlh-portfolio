@@ -4,6 +4,7 @@ from .data import work_experiences, hobbies, education, places  # Import educati
 from .data import news_items, research_papers, projects, teaching_experiences  # Add teaching_experiences import
 from datetime import datetime
 from peewee import *
+from playhouse.shortcuts import model_to_dict
 
 app = Flask(__name__)
 
@@ -16,6 +17,18 @@ mydb = MySQLDatabase(
 )
 
 print(mydb)
+
+class TimelinePost(Model):
+    name = CharField()
+    email = CharField()
+    content = TextField()
+    created_at = DateTimeField(default=datetime.now)
+
+    class Meta:
+        database = mydb
+
+mydb.connect()
+mydb.create_tables([TimelinePost])
 
 @app.route("/")
 def index():
@@ -91,3 +104,36 @@ from app.data import places
 @app.route('/places')
 def places_page():
     return render_template("places.html", places=places, title="Places", current_year=2025)
+
+@app.route('/api/timeline_post', methods=['POST'])
+def post_time_line_post():
+    name = request.form['name']
+    email = request.form['email']
+    content = request.form['content']
+
+    timeline_post = TimelinePost.create(
+        name=name,
+        email=email,
+        content=content
+    )
+
+    return model_to_dict(timeline_post)
+
+@app.route('/api/timeline_post', methods=['GET'])
+def get_time_line_post():
+    return {
+        "timeline_posts": [
+            model_to_dict(post) 
+            for post in 
+    TimelinePost.select().order_by(TimelinePost.created_at.desc())
+        ]
+    }
+
+@app.route('/api/timeline_post/<int:post_id>', methods=['DELETE'])
+def delete_time_line_post(post_id):
+    try:
+        post = TimelinePost.get(TimelinePost.id == post_id)
+        post.delete_instance()
+        return {"status": "success", "message": "Post deleted successfully."}, 200
+    except TimelinePost.DoesNotExist:
+        return {"status": "error", "message": "Post not found."}, 404
