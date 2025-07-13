@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timeline</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #333; }
+    form, .post { margin-bottom: 20px; }
+    .post { border-bottom: 1px solid #ccc; padding: 10px 0; }
+    img { border-radius: 50%; width: 40px; height: 40px; margin-right: 10px; vertical-align: middle; }
+  </style>
+</head>
+<body>
+  <h1>My Timeline</h1>
+
+  <form id="timeline-form">
+    <input type="text" name="name" placeholder="Name" required><br><br>
+    <input type="email" name="email" placeholder="Email" required><br><br>
+    <textarea name="content" placeholder="What’s on your mind?" required></textarea><br><br>
+    <button type="submit">Post</button>
+  </form>
+
+  <div id="timeline-posts"></div>
+
+  <script>
+    const form = document.getElementById('timeline-form');
+    const postsContainer = document.getElementById('timeline-posts');
+
+    function getGravatar(email) {
+      const hash = md5(email.trim().toLowerCase());
+      return `https://www.gravatar.com/avatar/${hash}?s=40&d=identicon`;
+    }
+
+    async function loadPosts() {
+      const res = await fetch('/api/timeline_post');
+      const data = await res.json();
+      postsContainer.innerHTML = '';
+      data.timeline_posts.forEach(post => {
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post';
+        postDiv.innerHTML = `
+          <img src="${getGravatar(post.email)}" alt="avatar" />
+          <strong>${post.name}</strong><br>
+          <small>${new Date(post.created_at).toLocaleString()}</small><br>
+          <p>${post.content}</p>
+        `;
+        postsContainer.appendChild(postDiv);
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      await fetch('/api/timeline_post', {
+        method: 'POST',
+        body: formData
+      });
+      form.reset();
+      loadPosts();
+    });
+
+    // Gravatar MD5 helper
+    function md5(str) {
+      return CryptoJS.MD5(str).toString();
+    }
+
+    // Load CryptoJS (for Gravatar hashing)
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js';
+    script.onload = loadPosts;
+    document.head.appendChild(script);
+  </script>
+</body>
+</html>
