@@ -11,13 +11,11 @@ cd ~/ethanvillalovoz-mlh-portfolio
 # Pull latest changes from GitHub main branch
 git fetch && git reset origin/main --hard
 
-# Activate conda environment
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate myenv
+# Activate Python venv
+source /opt/ethanvillalovoz-mlh-portfolio/python3-virtualenv/bin/activate
 
 # (Optional) Reinstall dependencies in case of updates
-pip install -r requirements.txt
+pip install -r /opt/ethanvillalovoz-mlh-portfolio/requirements.txt
 
 # Start Flask server in a detached tmux session
-tmux new-session -d -s flask "cd ~/ethanvillalovoz-mlh-portfolio && source ~/miniconda3/etc/profile.d/conda.sh && conda activate myenv && flask run --host=0.0.0.0"
-
+tmux new-session -d -s flask "cd /opt/ethanvillalovoz-mlh-portfolio && source python3-virtualenv/bin/activate && flask run --host=0.0.0.0"
