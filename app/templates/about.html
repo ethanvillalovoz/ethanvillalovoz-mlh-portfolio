@@ -23,7 +23,10 @@
     <main class="projects-main fade-in">
         <header class="projects-header" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1em;">
             <h1 style="margin:0;font-size:2.5rem;font-weight:700;">About</h1>
-            <a href="{{ url_for('static', filename='/data/EthanVillalovoz-CV.pdf') }}" target="_blank" rel="noopener noreferrer" class="btn">Download CV</a>
+            <div style="display:flex;gap:0.75em;">
+                <a href="{{ url_for('static', filename='/data/EthanVillalovoz-Resume.pdf') }}" target="_blank" rel="noopener noreferrer" class="btn">Download Resume</a>
+                <a href="{{ url_for('static', filename='/data/EthanVillalovoz-CV.pdf') }}" target="_blank" rel="noopener noreferrer" class="btn">Download CV</a>
+            </div>
         </header>
         <p class="subtitle" style="margin-top:0.5em;">A brief introduction, timeline, and fun facts about me.</p>
         <section class="projects-gallery">

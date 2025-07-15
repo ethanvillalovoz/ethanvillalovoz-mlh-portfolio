@@ -2,25 +2,133 @@
 <html>
 <head>
   <title>Timeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    h1 { color: #333; }
-    form, .post { margin-bottom: 20px; }
-    .post { border-bottom: 1px solid #ccc; padding: 10px 0; }
-    img { border-radius: 50%; width: 40px; height: 40px; margin-right: 10px; vertical-align: middle; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f8fa;
+      color: #222;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+    }
+    h1 {
+      color: #2d3748;
+      text-align: center;
+      margin-bottom: 32px;
+      font-size: 2.2em;
+      letter-spacing: 1px;
+    }
+    form {
+      background: #f1f5f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    input, textarea {
+      font-size: 1em;
+      padding: 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus {
+      border-color: #3182ce;
+    }
+    button {
+      background: #3182ce;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    #timeline-posts {
+      margin-top: 10px;
+    }
+    .post {
+      background: #f9fafb;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      padding: 16px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: box-shadow 0.2s;
+    }
+    .post:hover {
+      box-shadow: 0 4px 16px rgba(49,130,206,0.08);
+    }
+    .avatar {
+      flex-shrink: 0;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      margin-top: 2px;
+      box-shadow: 0 2px 8px rgba(49,130,206,0.08);
+    }
+    .post-content {
+      flex: 1;
+    }
+    .post-content strong {
+      font-size: 1.1em;
+      color: #2563eb;
+    }
+    .post-content small {
+      color: #718096;
+      font-size: 0.95em;
+    }
+    .post-content p {
+      margin: 8px 0 0 0;
+      font-size: 1.05em;
+      color: #222;
+      word-break: break-word;
+    }
+    @media (max-width: 700px) {
+      .container {
+        padding: 16px 4px;
+      }
+      .post {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .avatar {
+        margin-bottom: 8px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>My Timeline</h1>
+  <div class="container">
+    <h1>My Timeline</h1>
 
-  <form id="timeline-form">
-    <input type="text" name="name" placeholder="Name" required><br><br>
-    <input type="email" name="email" placeholder="Email" required><br><br>
-    <textarea name="content" placeholder="What’s on your mind?" required></textarea><br><br>
-    <button type="submit">Post</button>
-  </form>
+    <form id="timeline-form">
+      <input type="text" name="name" placeholder="Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <textarea name="content" placeholder="What’s on your mind?" required rows="3"></textarea>
+      <button type="submit">Post</button>
+    </form>
 
-  <div id="timeline-posts"></div>
+    <div id="timeline-posts"></div>
+  </div>
 
   <script>
     const form = document.getElementById('timeline-form');
@@ -28,7 +136,7 @@
 
     function getGravatar(email) {
       const hash = md5(email.trim().toLowerCase());
-      return `https://www.gravatar.com/avatar/${hash}?s=40&d=identicon`;
+      return `https://www.gravatar.com/avatar/${hash}?s=48&d=identicon`;
     }
 
     async function loadPosts() {
@@ -39,10 +147,12 @@
         const postDiv = document.createElement('div');
         postDiv.className = 'post';
         postDiv.innerHTML = `
-          <img src="${getGravatar(post.email)}" alt="avatar" />
-          <strong>${post.name}</strong><br>
-          <small>${new Date(post.created_at).toLocaleString()}</small><br>
-          <p>${post.content}</p>
+          <img class="avatar" src="${getGravatar(post.email)}" alt="avatar" />
+          <div class="post-content">
+            <strong>${post.name}</strong><br>
+            <small>${new Date(post.created_at).toLocaleString()}</small>
+            <p>${post.content}</p>
+          </div>
         `;
         postsContainer.appendChild(postDiv);
       });

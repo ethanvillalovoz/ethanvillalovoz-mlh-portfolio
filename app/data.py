@@ -191,7 +191,102 @@ research_papers = [
 
 projects = [
     {
-        "title": "DDPG: Deep Deterministic Policy Gradient (TensorFlow 2.x)",
+        "title": "SentiSync: Real-Time YouTube Sentiment Analysis with MLOps",
+        "description": "A full MLOps pipeline and Chrome extension for real-time sentiment analysis on YouTube comments, using Flask, MLflow, Docker, and AWS.",
+        "image": "/static/img/projects/sentisync.png",
+        "tags": [
+            "MLOps", "MLflow", "DVC", "Docker", "AWS", "Flask", "Chrome Extension", "Sentiment Analysis", "NLP", "LightGBM"
+        ],
+        "features": [
+            "Chrome Extension scrapes YouTube comments and fetches real-time sentiment insights from the backend",
+            "End-to-end MLOps workflow using DVC for reproducibility and MLflow for experiment tracking",
+            "Flask backend deployed via Docker on AWS EC2, with GitHub Actions-based CI/CD pipeline",
+            "Supports sentiment prediction, word cloud generation, and trend visualizations through API endpoints",
+            "Includes a suite of Jupyter notebooks for model experimentation, evaluation, and ensemble learning"
+        ],
+        "extraLinks": [
+            {"label": "GitHub", "url": "https://github.com/ethanvillalovoz/sentisync"},
+            {"label": "Docs", "url": "https://github.com/ethanvillalovoz/sentisync/blob/main/README.md"},
+        ],
+        "date": "July 2025",
+        "status": "Completed"
+    },
+    {
+        "title": "IntelliCrawl: Autonomous AI Research Agent for Developer Tools",
+        "description": "An advanced autonomous research agent that uses LLMs and web crawling to analyze and compare developer tools. Built with LangGraph, LangChain, and Firecrawl for scalable, multi-step analysis workflows.",
+        "image": "/static/img/projects/intellicrawl.png",
+        "tags": ["LLM", "LangChain", "LangGraph", "OpenAI", "Firecrawl", "CLI", "AI Agents"],
+        "features": [
+            "Supports batch, single, and interactive CLI modes with customizable output (text, markdown, JSON, CSV)",
+            "Uses LangGraph for async, multi-step workflows and LangChain for LLM orchestration",
+            "Scrapes and analyzes developer tool websites using Firecrawl and GPT-4o-mini",
+            "Implements persistent caching with diskcache and .env-configured API keys",
+            "Includes a secondary lightweight agent using Firecrawl MCP and GPT-4.1-nano"
+        ],
+        "extraLinks": [
+            {"label": "GitHub", "url": "https://github.com/ethanvillalovoz/intellicrawl"},
+            {"label": "Docs", "url": "https://github.com/ethanvillalovoz/intellicrawl/blob/main/README.md"},
+        ],
+        "date": "July 2025",
+        "status": "Completed"
+    },
+    {
+        "title": "LaTeX Resume Template",
+        "description": "A clean, ATS-friendly, and modern LaTeX resume template built for students and developers applying to technical roles. Features minimalist design, modular macros, and PDF outputs optimized for readability and machine parsing.",
+        "image": "/static/img/projects/resume-template.png",
+        "tags": ["LaTeX", "Resume", "ATS", "PDF", "Open Source"],
+        "features": [
+            "Modular LaTeX macros for easy customization and consistency across sections",
+            "Single-page layout with bolded technologies and quantifiable bullet points",
+            "Fully ATS-compatible PDF output using Unicode embedding and semantic structure",
+            "Includes Overleaf support, documentation, and contribution guidelines",
+            "Open-source under MIT License, ready to fork and adapt"
+        ],
+        "extraLinks": [
+            {"label": "GitHub", "url": "https://github.com/ethanvillalovoz/latex-resume-template"},
+            {"label": "Docs", "url": "https://github.com/ethanvillalovoz/latex-resume-template/blob/main/docs/ABOUT.md"},
+        ],
+        "date": "July 2025",
+        "status": "Completed"
+    },
+    {
+        "title": "FaceTrack: Smart Face Recognition Attendance System",
+        "description": "A full-stack web application that automates attendance tracking using facial recognition. Built with FastAPI, React, and SQLite, it supports real-time webcam input and batch image uploads for seamless attendance logging.",
+        "image": "/static/img/projects/facetrack.png",
+        "tags": ["Computer Vision", "OpenCV", "FastAPI", "React", "face_recognition", "SQLite"],
+        "features": [
+            "Real-time face recognition via webcam and batch image uploads",
+            "FastAPI backend with REST API endpoints and SQLite integration",
+            "React frontend with live feedback, image previews, and attendance viewer",
+            "OpenCV and face_recognition for robust face encoding and matching",
+            "Interactive database-backed attendance logs with export support"
+        ],
+        "extraLinks": [
+            {"label": "GitHub", "url": "https://github.com/ethanvillalovoz/FaceTrack-Face-Attendance-System"},
+        ],
+        "date": "July 2025",
+        "status": "Completed"
+    },
+    {
+        "title": "CodePrep.AI: AI-Powered Coding Interview Prep with LLMs",
+        "description": "An interactive full-stack web application that generates multiple-choice coding challenges using Meta-Llama-3-8B-Instruct. Designed for interview practice, daily challenge tracking, and progress feedback with real-time explanations.",
+        "image": "/static/img/projects/codeprep_home.png",
+        "tags": ["LLM", "AI Interview Prep", "FastAPI", "React", "Hugging Face", "SQLite"],
+        "features": [
+            "Dynamic challenge generation using Meta-Llama-3-8B-Instruct from Hugging Face",
+            "Clerk authentication with quota tracking and personalized history view",
+            "Full-stack system with React (Vite), FastAPI, and SQLite",
+            "Support for challenge explanation, user feedback, and difficulty selection",
+        ],
+        "extraLinks": [
+            {"label": "GitHub", "url": "https://github.com/ethanvillalovoz/codeprep-ai"},
+            {"label": "Architecture", "url": "https://github.com/ethanvillalovoz/codeprep-ai/blob/main/docs/architecture.md"},
+        ],
+        "date": "July 2025",
+        "status": "Completed"
+    },
+    {
+        "title": "DDPG: Deep Deterministic Policy Gradient Reimplementation in TensorFlow 2.x",
         "description": "A robust, modular, and extensible reimplementation of the DDPG reinforcement learning algorithm (Lillicrap et al., 2015) using TensorFlow 2.x. Built for reproducibility, research comparison, and interactive experimentation with Gym environments.",
         "image": "/static/img/projects/DDPG_padded.png",
         "tags": ["Reinforcement Learning", "DDPG", "TensorFlow", "OpenAI Gym"],
@@ -207,12 +302,12 @@ projects = [
             {"label": "Original Paper", "url": "https://arxiv.org/abs/1509.02971"},
         ],
         "date": "July 2025",
-        "status": "Completed",
+        "status": "Completed"
     },
     {
         "title": "ACME10-HE-RAGApp: RAG with Vector Search, Knowledge Graphs, and LLMs",
         "description": "A full-stack Retrieval-Augmented Generation (RAG) application developed for HackerEarth that integrates vector search (FAISS), knowledge graphs (DBpedia), and OpenAI’s LLM to generate traceable, context-rich answers from a Wikipedia-based knowledge base.",
-        "image": "/static/img/projects/RAG_flowchart.jpeg",
+        "image": "/static/img/projects/RAG_flowchart.jpg",
         "tags": ["LLM", "RAG", "Vector Search", "Knowledge Graph", "Full-Stack", "NLP"],
         "features": [
             "Developed for HackerEarth using 10,000+ Wikipedia articles",
@@ -226,9 +321,8 @@ projects = [
             {"label": "Final Report", "url": "https://github.com/mollyiverson/ACME10-HE-RAGApp/blob/main/docs/project-report/RAGApp-FinalReport.pdf"},
         ],
         "date": "May 2025",
-        "status": "Completed",
+        "status": "Completed"
     },
-    # Uncomment and add more projects as needed
 ]
 
 teaching_experiences = [
