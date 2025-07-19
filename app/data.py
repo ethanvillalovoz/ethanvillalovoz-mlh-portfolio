@@ -191,6 +191,40 @@ research_papers = [
 
 projects = [
     {
+        "title": "ClearBill.AI: Explaining Medical Bills with AI and RAG",
+        "description": "An AI-powered chatbot that uses Retrieval-Augmented Generation (RAG) with Astra DB, LangChain, and Hugging Face’s Llama-3.1-8B-Instruct to help users understand medical bills with clear, context-aware responses.",
+        "image": "/static/img/projects/clearbill.png",
+        "tags": [
+			"RAG",
+			"LLM",
+			"LangChain",
+			"Next.js",
+			"TypeScript",
+			"Vector Search",
+			"Astra DB",
+			"Healthcare AI",
+			"Web Scraping",
+			"Puppeteer",
+			"Hugging Face",
+			"Mistral",
+			"Llama-3"
+		],
+        "features": [
+            "Built with Next.js and TypeScript, featuring a sleek, responsive chat UI for seamless user interaction",
+			"Retrieves answers using semantic search over a vector database populated with scraped healthcare resources",
+			"Uses @xenova/transformers for local embedding and LangChain for intelligent text processing",
+			"Runs LLM inference with Llama-3.1-8B-Instruct via Hugging Face API with context injection",
+			"Includes a custom script to scrape, embed, and load structured healthcare content into Astra DB",
+			"CI/CD pipeline using GitHub Actions for automatic linting and builds on push"
+        ],
+        "extraLinks": [
+            {"label": "GitHub", "url": "https://github.com/ethanvillalovoz/clearbill-ai"},
+            {"label": "Docs", "url": "https://github.com/ethanvillalovoz/clearbill-ai/blob/main/README.md"},
+        ],
+        "date": "July 2025",
+        "status": "Completed"
+    },
+    {
         "title": "SentiSync: Real-Time YouTube Sentiment Analysis with MLOps",
         "description": "A full MLOps pipeline and Chrome extension for real-time sentiment analysis on YouTube comments, using Flask, MLflow, Docker, and AWS.",
         "image": "/static/img/projects/sentisync.png",
