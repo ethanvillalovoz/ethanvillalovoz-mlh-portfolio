@@ -1,13 +1,15 @@
 import unittest
 import os
-os.environ['TESTING'] = 'true'
 
 from app import app
 
 class AppTestCase(unittest.TestCase):
     def setUp(self):
+        os.environ['TESTING'] = 'true'
         self.client = app.test_client()
 
+    def tearDown(self):
+        del os.environ['TESTING']
     def test_home(self):
         response = self.client.get("/")
         assert response.status_code == 200
