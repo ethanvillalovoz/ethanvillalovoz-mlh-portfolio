@@ -6,6 +6,7 @@ from datetime import datetime
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 from dotenv import load_dotenv
+import re
 
 load_dotenv()
 
@@ -25,6 +26,8 @@ else:
     )
 
 print(mydb)
+
+EMAIL_REGEX = re.compile(r"^[^@]+@[^@]+\.[^@]+$")
 
 class TimelinePost(Model):
     name = CharField()
@@ -126,7 +129,7 @@ def post_time_line_post():
     if not name or name.strip() == "":
         return "Invalid name", 400
 
-    if not email or "@" not in email:
+    if not email or not EMAIL_REGEX.match(email):
         return "Invalid email", 400
 
     if not content or content.strip() == "":
