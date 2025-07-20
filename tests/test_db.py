@@ -3,14 +3,7 @@ from peewee import Model, CharField, TextField, SqliteDatabase
 
 test_db = SqliteDatabase(':memory:')
 
-class TimelinePost(Model):
-    name = CharField()
-    email = CharField()
-    content = TextField()
-
-    class Meta:
-        database = test_db
-
+from app.models import TimelinePost  # Import the model from the main application module
 MODELS = [TimelinePost]
 
 class TestTimelinePost(unittest.TestCase):
