@@ -23,7 +23,7 @@ services:
     image: jonasal/nginx-certbot
     restart: always
     environment:
-      - CERTBOT_EMAIL=name@example.com  # Replace with your actual email
+      - CERTBOT_EMAIL=ethan.villalovoz@gmail.com  # Replace with your actual email
     ports:
       - "80:80"
       - "443:443"
