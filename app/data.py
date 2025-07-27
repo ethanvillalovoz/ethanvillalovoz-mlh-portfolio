@@ -4,7 +4,9 @@ work_experiences = [
         "company": "Meta x MLH",
         "dates": "Summer 2025",
         "location": "Remote USA",
-        "responsibilities": []
+        "responsibilities": [
+	   "Having a fun time!"
+	]
     },
     {
         "role": "Undergraduate Research Assistant",
