@@ -69,13 +69,7 @@ This portfolio site features dynamic sections for About Me, Work Experience, Edu
     cd your-repo
     ```
 
-2. Create and activate a virtual environment (choose one):
-
-   **Using Conda:**
-   ```bash
-   conda create -n myenv python=3.10
-   conda activate myenv
-   ```
+2. Create and activate a virtual environment:
 
    **Using venv:**
    ```bash
