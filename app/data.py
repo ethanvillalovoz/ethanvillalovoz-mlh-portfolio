@@ -5,7 +5,9 @@ work_experiences = [
         "dates": "Summer 2025",
         "location": "Remote USA",
         "responsibilities": [
-	   "Having a fun time!"
+	   "Having a fun time!",
+	   "Learning about production engineering practices and systems",
+	   "Working on Week 8 portfolio updates and GitHub Actions testing"
 	]
     },
     {
