@@ -56,7 +56,7 @@ jobs:
         run: ssh my-vps '~/redeploy-site.sh'
         
       - name: Print Container Status
-        run: ssh my-vps 'cd /opt/ethanvillalovoz-mlh-portfolio && docker-compose ps'
+        run: ssh my-vps 'cd /opt/ethanvillalovoz-mlh-portfolio && sudo docker ps || echo "Unable to get container status"'
         
       - name: Send Success Notification to Discord
         if: success()
