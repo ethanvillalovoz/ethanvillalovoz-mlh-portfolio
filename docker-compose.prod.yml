@@ -1,35 +1,42 @@
-version: "3"
 services:
+  mysql:
+    container_name: mysql
+    image: mariadb:11
+    restart: always
+    env_file:
+      - .env
+    environment:
+      # Generate a random root password so we don't need to manage one.
+      - MARIADB_RANDOM_ROOT_PASSWORD=1
+      # Bootstrap the app database + user from .env values:
+      - MARIADB_DATABASE=${MYSQL_DATABASE}
+      - MARIADB_USER=${MYSQL_USER}
+      - MARIADB_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - mydatabase:/var/lib/mysql
+    healthcheck:
+      # Wait until the DB accepts connections with the app user/password.
+      test: ["CMD-SHELL", "mariadb-admin ping -h 127.0.0.1 -p$MARIADB_PASSWORD --silent || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
   myportfolio:
     container_name: myportfolio
     build: .
     restart: always
     env_file:
       - .env
-    environment:
-      - DB_HOST=mysql
-      - DB_PORT=3306
-      - DB_USER=${MYSQL_USER}         # <- Use environment variable for user
-      - DB_PASSWORD=${MYSQL_PASSWORD} # <— use .env
-      - DB_NAME=${MYSQL_DATABASE}     # <— use .env
     depends_on:
-      - mysql
-
-  mysql:
-    container_name: mysql
-    image: mariadb
-    restart: always
-    env_file:
-      - .env
-    volumes:
-      - mydatabase:/var/lib/mysql
+      mysql:
+        condition: service_healthy
 
   nginx:
     container_name: nginx
     image: jonasal/nginx-certbot
     restart: always
     environment:
-      - CERTBOT_EMAIL=ethan.villalovoz@gmail.com  # Replace with your actual email
+      - CERTBOT_EMAIL=ethan.villalovoz@gmail.com
     ports:
       - "80:80"
       - "443:443"

@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request, redirect, flash, url_for, jsonify
-import os
+import os, time, re
 from .data import work_experiences, hobbies, education, places
 from .data import news_items, research_papers, projects, teaching_experiences
 from datetime import datetime
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 from dotenv import load_dotenv
-import re
-# Keep mysql connector imports
+
+# (Keep mysql-connector imports if used elsewhere)
 import mysql.connector
 from mysql.connector import Error
 
@@ -15,22 +15,25 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Use SQLite if in test mode
+EMAIL_REGEX = re.compile(r"^[^@]+@[^@]+\.[^@]+$")
+
+# --- Database config ---
 if os.getenv("TESTING") == "true":
-    print("Running in test mode")
+    print("Running in test mode (SQLite)")
     mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
 else:
+    MYSQL_HOST = os.getenv("MYSQL_HOST", "mysql")   # MUST be "mysql" in docker
+    MYSQL_DB   = os.getenv("MYSQL_DATABASE", "myportfoliodb")
+    MYSQL_USER = os.getenv("MYSQL_USER", "myportfolio")
+    MYSQL_PASS = os.getenv("MYSQL_PASSWORD", "mypassword")
+
     mydb = MySQLDatabase(
-        os.getenv("MYSQL_DATABASE"),
-        user=os.getenv("MYSQL_USER"),
-        password=os.getenv("MYSQL_PASSWORD"),
-        host=os.getenv("MYSQL_HOST"),
+        MYSQL_DB,
+        user=MYSQL_USER,
+        password=MYSQL_PASS,
+        host=MYSQL_HOST,
         port=3306
     )
-
-print(mydb)
-
-EMAIL_REGEX = re.compile(r"^[^@]+@[^@]+\.[^@]+$")
 
 class TimelinePost(Model):
     name = CharField()
@@ -41,35 +44,34 @@ class TimelinePost(Model):
     class Meta:
         database = mydb
 
-mydb.connect()
+# --- Connect with a brief retry to avoid race with DB startup ---
+if os.getenv("TESTING") == "true":
+    mydb.connect(reuse_if_open=True)
+else:
+    for attempt in range(30):  # up to ~60s (30 x 2s)
+        try:
+            mydb.connect(reuse_if_open=True)
+            break
+        except OperationalError as e:
+            print(f"DB not ready (attempt {attempt+1}/30): {e}")
+            time.sleep(2)
+
+# Ensure table exists
 mydb.create_tables([TimelinePost])
 
+# --- Health endpoint that touches the DB ---
 @app.route("/health")
 def health_check():
     try:
-        # Instead of using a connection pool, use the existing mydb connection
-        # which is already set up and working with the rest of the application
         if os.getenv("TESTING") == "true":
-            # For SQLite testing environment
             cursor = mydb.execute_sql("SELECT datetime('now')")
-            result = cursor.fetchone()
         else:
-            # For MySQL production environment
             cursor = mydb.execute_sql("SELECT NOW()")
-            result = cursor.fetchone()
-        
+        result = cursor.fetchone()
         db_time = result[0] if result else None
-        
-        return jsonify({
-            "status": "ok",
-            "time": str(db_time)
-        }), 200
-        
+        return jsonify({"status": "ok", "time": str(db_time)}), 200
     except Exception as e:
-        return jsonify({
-            "status": "error",
-            "message": str(e)
-        }), 500
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route("/")
 def index():
