@@ -8,3 +8,4 @@ PyMySQL==1.0.2
 python-dotenv==0.17.1
 Werkzeug==2.0.1
 cryptography==3.4.7
+mysql-connector-python==8.0.30

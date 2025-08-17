@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash, url_for
+from flask import Flask, render_template, request, redirect, flash, url_for, jsonify
 import os
 from .data import work_experiences, hobbies, education, places
 from .data import news_items, research_papers, projects, teaching_experiences
@@ -7,6 +7,9 @@ from peewee import *
 from playhouse.shortcuts import model_to_dict
 from dotenv import load_dotenv
 import re
+# Keep mysql connector imports
+import mysql.connector
+from mysql.connector import Error
 
 load_dotenv()
 
@@ -40,6 +43,33 @@ class TimelinePost(Model):
 
 mydb.connect()
 mydb.create_tables([TimelinePost])
+
+@app.route("/health")
+def health_check():
+    try:
+        # Instead of using a connection pool, use the existing mydb connection
+        # which is already set up and working with the rest of the application
+        if os.getenv("TESTING") == "true":
+            # For SQLite testing environment
+            cursor = mydb.execute_sql("SELECT datetime('now')")
+            result = cursor.fetchone()
+        else:
+            # For MySQL production environment
+            cursor = mydb.execute_sql("SELECT NOW()")
+            result = cursor.fetchone()
+        
+        db_time = result[0] if result else None
+        
+        return jsonify({
+            "status": "ok",
+            "time": str(db_time)
+        }), 200
+        
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
 
 @app.route("/")
 def index():
